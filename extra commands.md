@@ -76,5 +76,5 @@
 * To create a new post for a user
 ```user.post_set.create(title='Blog 3', content='Third Post')```
 
-## TO create users app
+## To create users app
 ```python manage.py startapp users```

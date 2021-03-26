@@ -14,3 +14,6 @@ class Post(models.Model):
     #ForeignKey as author can create multiple posts
     #on_delete ->if user is deleted all their posts too
 
+    #dunder str method
+    def __str__(self):
+        return self.title

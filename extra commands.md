@@ -48,3 +48,33 @@
 
 ```Post.objects.all()```
 
+* To create a new post
+```post_1=Post(title='Blog 1', content='First post!', author=user)```
+
+* To save the post to our db
+```post_1.save()```
+
+* Save it to a variable post
+```post = Post.objects.first()```
+
+* Now to see it's content
+```post.content```
+
+* To see date_posted
+```post.date_posted```
+
+* To see post author
+```post.author```
+
+* To see post author email
+```post.author.email```
+
+* To see all posts by a user
+```user.post_set```
+```user.post_set.all()```
+
+* To create a new post for a user
+```user.post_set.create(title='Blog 3', content='Third Post')```
+
+## TO create users app
+```python manage.py startapp users```

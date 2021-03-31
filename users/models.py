@@ -16,6 +16,13 @@ class Profile(models.Model):
     #to resize/compress large images
     #overiding existing parent class method
     def save(self):
-        super.save()
+        super().save()
 
         img = Image.open(self.image.path)
+
+        if img.height > 300 or img.width >300:
+            output_size = (300, 300)
+            #make image of size 300x300
+            img.thumbnail(output_size)
+            #overwrite over existing image
+            img.save(self.image.path)

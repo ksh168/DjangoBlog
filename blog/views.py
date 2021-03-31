@@ -3,6 +3,8 @@ from django.shortcuts import render
 
 from .models import Post    # .models as model in same directory
 
+from django.views.generic import ListView, DetailView
+
 # dummy test data
 # posts = [
 #     {
@@ -24,6 +26,18 @@ def home(request):
         'posts': Post.objects.all()
     }
     return render(request, 'blog/home.html', context)
+
+class PostListView(ListView):
+    model = Post
+    template_name = 'blog/home.html'    # <app>/<model>_<viewtype>.html
+
+    context_object_name = 'posts'
+    #order post by newest to oldest
+    ordering = ['-date_posted']     #the "-" sign causes the newest to oldest
+
+
+class PostDetailView(DetailView):
+    model = Post
 
 
 def about(request):

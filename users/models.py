@@ -15,8 +15,10 @@ class Profile(models.Model):
 
     #to resize/compress large images
     #overiding existing parent class method
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        #use *args and **kwargs to avoid "force_insert" error during new user register process
+        #https://stackoverflow.com/a/52351829
+        super(Profile, self).save(*args, **kwargs)
 
         img = Image.open(self.image.path)
 

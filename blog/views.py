@@ -46,6 +46,7 @@ class PostListView(ListView):
     context_object_name = 'posts'
     #order post by newest to oldest
     ordering = ['-date_posted']     #the "-" sign causes the newest to oldest
+    paginate_by = 7
 
 
 class PostDetailView(DetailView):

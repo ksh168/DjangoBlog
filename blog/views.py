@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 # from django.http import HttpResponse  #no longer used since we're using render to display html files
 
 from .models import Post    # .models as model in same directory
+
+from django.contrib.auth.models import User
 
 from django.views.generic import (
     ListView,
@@ -47,6 +49,22 @@ class PostListView(ListView):
     #order post by newest to oldest
     ordering = ['-date_posted']     #the "-" sign causes the newest to oldest
     paginate_by = 7
+
+
+class UserPostListView(ListView):
+    model = Post
+    template_name = 'blog/user_posts.html'    # <app>/<model>_<viewtype>.html
+
+    context_object_name = 'posts'
+    #order post by newest to oldest
+    #ordering = ['-date_posted']     #the "-" sign causes the newest to oldest
+    paginate_by = 7     #no. of posts in one page
+
+    #overiding a built in method
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(author=user).order_by('-date_posted')
+
 
 
 class PostDetailView(DetailView):

@@ -2,7 +2,7 @@
 
 ### This project can be viewed [here](https://djangoblog0.pythonanywhere.com/)
 
-
+![](django_blog.png)
 
 
 * Blog website made using **Django** and deployed on **PythonAnywhere**. Uses **sqlite3** as database

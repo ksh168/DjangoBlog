@@ -135,3 +135,12 @@ LOGIN_REDIRECT_URL = 'blog-home'
 
 #where to redirect users if they aren't logged in(giving django location of our login route)
 LOGIN_URL = 'login'
+
+#to send password reset email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'in-v3.mailjet.com'
+EMAIL_PORT = 587#smtp port
+EMAIL_USE_TLS = True
+#using environment variables
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
